@@ -6,3 +6,5 @@
      (s/split #"\n")
      (count)))
 
+(defn get-non-comment-lines [s]
+  [])
