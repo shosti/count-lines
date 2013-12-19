@@ -27,9 +27,11 @@
 
 (defn get-non-comment-lines [lines]
   (->> lines
-     (map (fn [line] [true line]))
-     (map mark-lines)
-     (map (lambda [[comment line] [comment]]))))
+     (map (fn [line] [true line]) ,,,)
+     (map (fn [[comment line]] [(not (.startsWith "//" line)) line]) ,,,)
+     (map (fn [[comment line]] comment)) ,,,))
+
+(get-non-comment-lines ["//" "1" "2 //"])
 
 
 
