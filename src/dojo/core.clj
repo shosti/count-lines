@@ -3,3 +3,6 @@
 
 (defn count-lines [s]
   (s/split "hello\there" #"\n"))
+
+(defn get-non-comment-lines [s]
+  [])
