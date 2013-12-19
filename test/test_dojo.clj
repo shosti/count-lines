@@ -1,7 +1,8 @@
 (ns test-dojo
-  (:refer-clojure :exclude [test])
+  (:refer-clojure :exclude [test replace reverse])
   (:use midje.sweet
-        dojo.core))
+        dojo.core
+        clojure.string))
 
 (def source-1
   ["-" "// This file contains 3 lines of code"
@@ -41,10 +42,10 @@
        (map #(not= "-" %) ,,,)))
 
 (facts "source 1 works"
-  (get-non-comment-lines (get-code source-1)) => (get-result source-1))
+  (get-non-comment-lines (get-code-lines source-1)) => (get-result source-1))
 
 (facts "source 2 works"
-  (get-non-comment-lines (get-code source-2)) => (get-result source-2))
+  (get-non-comment-lines (get-code-lines source-2)) => (get-result source-2))
 
 
 

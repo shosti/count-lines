@@ -25,8 +25,11 @@
 
 ;(count-lines (slurp "sample.txt"))
 
-(defn get-non-comment-lines [s]
-  [])
+(defn get-non-comment-lines [lines]
+  (->> lines
+     (map (fn [line] [true line]))
+     (map mark-lines)
+     (map (lambda [[comment line] [comment]]))))
 
 
 
