@@ -1,6 +1,5 @@
-(ns dojo.core)
+(ns dojo.core
+  (:require [clojure.string :as s]))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(defn count-lines [s]
+  (s/split "hello\there" #"\n"))
