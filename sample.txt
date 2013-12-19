@@ -5,3 +5,8 @@ public interface Dave {
    */
   int countLines(File inFile); // not the real signature!
 }
+
+public static void Main { /* These
+                          are lots of comments */
+/*
+"Hello*/ public
