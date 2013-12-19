@@ -1,6 +1,18 @@
 (ns dojo.core
   (:require [clojure.string :as s]))
 
+(defn strip-whitespace [lines]
+  (map s/trim lines))
+
+(defn remove-blank-lines [lines]
+  (filter (complement s/blank?) lines))
+
+(defn remove-block-comments [lines]
+  #_(reduce (fn [[lines in-comment] line])))
+
+(defn remove-line-comments [lines]
+  (filter (complement #(re-find #"^//" %)) lines))
+
 (defn count-lines [str]
   (-> str
      (s/split-lines)
@@ -10,17 +22,11 @@
      (remove-line-comments)
      (count)))
 
-(defn strip-whitespace [lines]
-  (map s/trim lines))
 
-(defn remove-blank-lines [lines]
-  (filter (complement s/blank?) lines))
-
-(defn remove-block-comments [lines]
-  (reduce (fn [[lines in-comment] line])))
-
-(defn remove-line-comments [lines]
-  (filter (complement #(re-find #"^//" %))))
+;(count-lines (slurp "sample.txt"))
 
 (defn get-non-comment-lines [s]
   [])
+
+
+
